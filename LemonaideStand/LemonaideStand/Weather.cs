@@ -15,8 +15,8 @@ namespace LemonaideStand
         public string condition;
         double temperatureAffect;
         double conditionAffect;
-        public int forcastTemperatue;
-        public int forcastCondition;
+        public int forecastTemperature;
+        public string forecastCondition;
 
         private Random random;
 
@@ -90,25 +90,25 @@ namespace LemonaideStand
 
         public void ForecastTemperature()
         {
-            int DailyTemperature = Random.Next(0, TemperatureOfWeather.Length);
-            forcastTemperature = TemperatureOfWeather[DailyTemperature];
+            int DailyTemperature = random.Next(0, TemperatureOfWeather.Length);
+            forecastTemperature = TemperatureOfWeather[DailyTemperature];
         }
 
-        public void ForcastCondition()
+        public void ForecastCondition()
         {
-            int WeatherCondition = Random.Next(0, ConditionOfWeather.Length);
-            forcastCondition = ConditionOfWeather[WeatherCondition];
+            int WeatherCondition = random.Next(0, ConditionOfWeather.Length);
+            forecastCondition = ConditionOfWeather[WeatherCondition];
         }
 
 
         public void CreateForecastWeather()
         {
-            List<string> weatherForcast = new List<string> { "Tommorow's ", "The next day's ", "And the day after that's " };
-            foreach (string day in weatherForcast)
+            List<string> weatherForecast = new List<string> { "Tommorow's ", "The next day's ", "And the day after that's " };
+            foreach (string day in weatherForecast)
             {
                 ForecastTemperature;
-                ForcastCondition;
-                Console.WriteLine(day + "forcast is {0} {1} \n\n" forcastTemperature, forcastCondition);
+                ForecastCondition;
+                Console.WriteLine(day + "forcast is {0} {1} \n\n", forecastTemperature, forecastCondition);
             }
         }
     }
