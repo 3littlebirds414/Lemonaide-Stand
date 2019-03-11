@@ -7,23 +7,106 @@ namespace LemonaideStand
 {
     public class Inventory
     {
-        private double costLemonsPerCup;
-        private double costLemonPerTbs;
-        private int lemons;
-        private double bagOfSugar;
-        private double costSugarPerCup;
-        private double costSugarPerTbs;
-        private int bagOfIce;
-        private int costOfIcePerCup;
 
-        public void CostOfSupplies()
+        List<Lemon> lemons = new List<Lemon>();
+        List<Sugar> sugar = new List<Sugar>();
+        List<Ice> ice = new List<Ice>();
+
+        public void AddLemons(int NumberOfLemonsNeeded)
         {
-            throw new System.NotImplementedException();
+            for (int i = 0; i < NumberOfLemonsNeeded; i++)
+            {
+                Lemon lemon = new Lemon();
+                lemons.Add(lemon);
+            }
+            Console.WriteLine("You currently have {0} lemons.\n\n", lemons.Count);
         }
 
-        public void CostToMakeOneCup()
+
+        public void RemoveLemons(Player player)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                int lemonsToRemove = player.recipe.TakeLemonsOut();
+                for (int i = 0; i < lemonsToRemove; i++)
+                {
+                    lemons.RemoveAt(0);
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Oops!  You need to modify your recipe! Lets try again!");
+                player.recipe.ChooseRecipe();
+                throw;
+            }
+        }
+        public void AddSugar(int bagsOfSugarNeeded)
+        {
+            for (int i = 0; i < bagsOfSugarNeeded; i++)
+            {
+                Sugar sugar = new Sugar();
+                this.sugar.Add(sugar);
+            }
+            Console.WriteLine("You just added {0} cups of sugar!\n\n"; bagsOfSugarNeeded.Count);
+        }
+
+        public void RemoveSugar(Player player)
+        {
+            try
+            { int sugarToRemove = player.recipe.TakeSugarOut();
+                for (int i = 0; i < sugarToRemove; i++)
+                {
+                    sugar.RemoveAt(0);
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Opps! You need to modify your recipe.  Lets try again!");
+                player.recipe.ChooseRecipe();
+                throw;
+            }
+        }
+
+        public void AddIce(int NumberOfIceCubesNeeded)
+        {
+            for (int i = 0; i < NumberOfIceCubesNeeded; i++)
+            {
+                Ice ice = new Ice();
+                this.ice.Add(ice);
+            }
+            Console.WriteLine("You currently have {0} ice cubes.\n\n", ice.Count);
+        }
+
+        public void RemoveIce(Player player)
+        {
+            try
+            {
+                int iceToRemove = player.recipe.TakeIceOut();
+                {
+                    ice.RemoveAt(0);
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Oops!  Looks like you need to modify your recipe! Lets try again!");
+                player.recipe.ChooseRecipe();
+                throw;
+            }
+        }
+
+        public void ShowAllProductInventory()
+        {
+            Console.WriteLine("You currently have {0} lemons.\n\n", lemons.Count);
+            Console.WriteLine("You currently have {0} cups of sugar.\n\n", sugar.Count);
+            Console.WriteLine("You currently have {0} ice cubes.\n\n", ice.Count);
+        }
+
+        public void RemoveItemsAfterLemonadeWasMade(Player player)
+        {
+            RemoveLemons(player);
+            RemoveSugar(player);
+            RemoveIce(player);
+
         }
     }
 }

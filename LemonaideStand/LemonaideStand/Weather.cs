@@ -33,22 +33,40 @@ namespace LemonaideStand
             int dailyTemperature = random.Next(0, TemperatureOfWeather.Length);
             temperature = TemperatureOfWeather[dailyTemperature];
         }
+
  /// WORK INPROGRESS PROBABILITY AFFECT OF TEMPERATURE ON PURCHASING
+ /// per Ian...do something more detailed with top two numbers
  
         public void TemperatureAffect()
         {
+            if ( temperature == 100 || temperature == 90 )
+            {
+                conditionAffect = 1;
+            }
 
+            else if (temperature == 80)
+            {
+                conditionAffect = .9;
+            }
+
+            else if (temperature == 70)
+            {
+                conditionAffect = .4;
+            }
+
+            else
+            {
+                conditionAffect = .1;
+            }
         }
-    /// END
-
 
         public void DailyCondition()
         {
             int WeatherCondition = random.Next(0, ConditionOfWeather.Length);
             condition = ConditionOfWeather[WeatherCondition];
         }
-
-/// WORK INPROGRESS PROBABILITY AFFECT OF CONDITION ON PURCHASING
+//ToDo ALERT
+// Per Ian - do something more detailed to Condition Hot
         public void ConditionAffect()
         {
             if(condition == "hot" || condition == "sunny")
@@ -71,7 +89,7 @@ namespace LemonaideStand
                 conditionAffect = .1;
             }
         }
-  //END
+
 
         public void CreateTodaysWeather()
         {
@@ -108,7 +126,8 @@ namespace LemonaideStand
             {
                 ForecastTemperature;
                 ForecastCondition;
-                Console.WriteLine(day + "forcast is {0} {1} \n\n", forecastTemperature, forecastCondition);
+                //FIXTHIS
+                Console.WriteLine(day + "forcast is really nifty \n\n", forecastTemperature, forecastCondition);
             }
         }
     }
