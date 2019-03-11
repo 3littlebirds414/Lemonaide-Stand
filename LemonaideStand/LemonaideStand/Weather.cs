@@ -106,27 +106,30 @@ namespace LemonaideStand
             Console.WriteLine("Todays weather is: {0} {1} \n\n", temperature, condition);
         }
 
-        public void ForecastTemperature()
+        public int ForecastTemperature()
         {
             int DailyTemperature = random.Next(0, TemperatureOfWeather.Length);
             forecastTemperature = TemperatureOfWeather[DailyTemperature];
+            return forecastTemperature;
+
         }
 
-        public void ForecastCondition()
+        public string ForecastCondition()
         {
             int WeatherCondition = random.Next(0, ConditionOfWeather.Length);
             forecastCondition = ConditionOfWeather[WeatherCondition];
+            return forecastCondition;
         }
 
 
-        public void CreateForecastWeather()
+        public string CreateForecastWeather()
         {
             List<string> weatherForecast = new List<string> { "Tommorow's ", "The next day's ", "And the day after that's " };
             foreach (string day in weatherForecast)
             {
                 ForecastTemperature;
                 ForecastCondition;
-                //FIXTHIS
+                
                 Console.WriteLine(day + "forcast is really nifty \n\n", forecastTemperature, forecastCondition);
             }
         }

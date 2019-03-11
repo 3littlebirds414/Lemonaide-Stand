@@ -70,27 +70,30 @@ namespace LemonaideStand
             }
         }
 
-        public SellLemonade(Player player)
+        public double SellLemonade(Player player)
         {
             for (int i = 0; i < stopSelling; i++)
             {
 
-                if (customer[i].buy == true)
+                if (customers[i].buy == true)
                 {
                     sale = pricePerCup;
                     player.wallet.moneyInWallet += sale;
                     moneyEarned = sale * stopSelling;
                 }
 
-            Console.WriteLine("Here are your earnings:  {0}", moneyEarned);
-            return player.wallet.moneyInWallet;
+            //Console.WriteLine("Here are your earnings:  {0}, {1}, {2}", moneyEarned,5 ,67, 78);
+                Console.WriteLine($" this is the money earned, {moneyEarned}");
+                //Console.WriteLine("this is money Earned " + moneyEarned);
+       
             }
+            return player.wallet.moneyInWallet;
         }
         /// Need to figure out how to remove number of pitchers
      
         public void calculatingWhenToStop (Player player)
         {
-            stopSelling = player.recipe.cupsForRecipe * player.recipe.numberOfPitchers
+            //stopSelling = sold < player.recipe.numberOfPitchers
         }
     }
 }

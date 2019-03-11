@@ -16,11 +16,10 @@ namespace LemonaideStand
         int lemonsForRecipe = 6;
         int sugarForRecipe = 7;
         int iceForRecipe = 25;
-        public int cupsForRecipe = 10;
         public void ChooseRecipe()
         {
             Console.WriteLine("Lets follow the recipe my daughters used...they made a killing with it and you will too!");
-            Console.WriteLine("It contains 6 lemons, 7 cups of sugar, 25 ice cubes making 10 cups of lemonade.\n\n");
+            Console.WriteLine("It contains 6 lemons, 7 cups of sugar, 25 ice cubes making 10 cups or one pitcher of lemonade.\n\n");
             Console.WriteLine("Are you ready to mix?  Enter Y or N.\n\n");
             string userinput = Console.ReadLine().ToUpper();
             switch (userinput)
@@ -29,7 +28,7 @@ namespace LemonaideStand
                     ChooseNumberOfPitchers();
                     break;
                 case "N":
-                   // ChooseNumberOfPitchers();
+                    //MainMenu();
                     break;
 
                 default:

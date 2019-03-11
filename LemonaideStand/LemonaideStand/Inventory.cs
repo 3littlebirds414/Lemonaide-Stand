@@ -47,7 +47,7 @@ namespace LemonaideStand
                 Sugar sugar = new Sugar();
                 this.sugar.Add(sugar);
             }
-            Console.WriteLine("You just added {0} cups of sugar!\n\n"; bagsOfSugarNeeded.Count);
+            Console.WriteLine("You just added {0} cups of sugar!\n\n", bagsOfSugarNeeded.Count);
         }
 
         public void RemoveSugar(Player player)

@@ -76,7 +76,6 @@ namespace LemonaideStand
             NumberOfLemonsPurchased(numberOfLemons);
             PayForLemons(player);
             player.inventory.AddLemons(numberOfLemons);
-            Console.WriteLine("\n\n");
             Restock(player);
         }
 
@@ -126,7 +125,7 @@ namespace LemonaideStand
         }
 
 //ICE SECTION
-        public int BagsOfIceNeeded(Player player)
+        public void BagsOfIceNeeded(Player player)
         {
             Console.WriteLine("A bag of ice is $2.00.\n\n");
             Console.WriteLine("How many bags of ice would you like?\n\n");
@@ -134,13 +133,24 @@ namespace LemonaideStand
             try
             {
                 int bagsOfIceNeeded = int.Parse(Console.ReadLine());
-                return bagsOfIceNeeded;
+                if (player.wallet.checkIfBankrupt(2*bagsOfIceNeeded) == false)
+                {
+                    player.inventory.AddIce(bagsOfIceNeeded);
+                    player.wallet.moneyInWallet -= bagsOfIceNeeded * 2;
+                }
+                else
+                {
+                    Console.WriteLine("No money!");
+                }
+               
+                //return bagsOfIceNeeded;
             }
             catch(Exception)
             {
                 Console.WriteLine("Whoops!  Enter a number next time,ok?\n\n");
                 Restock(player);
             }
+
         } 
 
         public int BagsOfIcePurchased(int bagsOfIceNeeded)
